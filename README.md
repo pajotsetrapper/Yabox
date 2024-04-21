@@ -40,6 +40,11 @@ A0        ADC0		  !            Analog input pin, cannot be configured as output 
 GND                                                                                      GND all components
 3V3                                                                                      3V3 all components
 
+* Best is to attach the encoder & buttons to interrupt capable pins:
+The Wemos board wiki suggests that any pin except D0 can be used for interrupts.
+D3 and D4 are commonly chosen because they work well for various shields and modules.
+!! dinf a solution for Roatary encoder pin A
+
 ... and the push button is then used as switch between VCC & the display's backlight
 
 ## Dependencies
