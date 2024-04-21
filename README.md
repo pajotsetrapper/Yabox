@@ -26,25 +26,28 @@ Yet another box - multi purpose box for my domotics
 
 |Label|GPIO|Safe to use?|Reason|Connect to|Support interrupts|
 |-----|----|------------|------|----------|------------------|
-|D0|GPIO16|!|HIGH at boot, used to wake up from deep sleep|Rotary encoder out A|no|
-|D1|GPIO5|v|/|Nokia 5510 Display CLK|yes|
-|D2|GPIO4|v|/|Nokia 5510 Display DIN|yes|
-|D3|GPIO0|!|connected to FLASH button, boot fails if pulled LOW|BME280 SCL|yes|
-|D4|GPIO2|!|HIGH at boot, boot fails if pulled LOW|BME280 SDA|yes|
+|D0|GPIO16|!|HIGH at boot, used to wake up from deep sleep|Rotary encoder switch|no|
+|D1|GPIO5|v|/|BME280 SCL|yes|
+|D2|GPIO4|v|/|BME280 SDA|yes|
+|D3|GPIO0|!|connected to FLASH button, boot fails if pulled LOW|free|yes| --
+|D4|GPIO2|!|HIGH at boot, boot fails if pulled LOW|free|yes|              --
 |D5|GPIO14|v|/|Nokia 5510 Display DC|yes|
-|D6|GPIO12|v|/|Nokia 5510 Display CE|yes|
+|D6|GPIO12|v|/|Nokia 5510 Display CE|yes| >> could hardcode & pull to ground
 |D7|GPIO13|v|/|Nokia 5510 Display RST|yes|
-|D8|GPIO15|!|Required for boot, boot fails if pulled HIGH|Rotary encoder out B|yes|
+rotar
 |RX|GPIO3|!|Rx pin, used for flashing and debugging|Programming|?|
 |TX|GPIO1|!|Tx pin, used for flashing and debugging|Programming|?|
-|A0|ADC0|!|Analog input pin, cannot be configured as output|Rotary encoder switch|?|
+|A0|ADC0|!|Analog input pin, cannot be configured as output|Rotary encoder out A|?|
 |GND|/|v|/|GND all components|n/a|
 |3V3|/|v|/|3V3 all components|n/a|
+
+!!Nokia 5510 Display CLK
+!!Nokia 5510 Display DIN
 
 * Best is to attach the encoder & buttons to interrupt capable pins:
 The Wemos board wiki suggests that any pin except D0 can be used for interrupts.
 D3 and D4 are commonly chosen because they work well for various shields and modules.
-!! dinf a solution for Roatary encoder pin A
+
 
 ... and the push button is then used as switch between VCC & the display's backlight
 
