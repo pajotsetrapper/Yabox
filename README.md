@@ -35,7 +35,7 @@ Yet another box - multi purpose box for my domotics
 |D5|GPIO14|v|SCK|Display CLK|yes|
 |D6|GPIO12|v|MISO|Display DC|yes|
 |D7|GPIO13|v|MOSI|Display DIN (mosi)|yes|
-|D8|GPIO15|!|Required for boot, boot fails if pulled high|Rotary encoder switch|yes|
+|D8|GPIO15|!|Required for boot, boot fails if pulled high. Need to press rotary button while startup with rotary on breakout (otherwise pulled high)|Rotary encoder switch|yes|
 |RX|GPIO3|!|Rx pin, used for flashing and debugging|Programming|?|
 |TX|GPIO1|!|Tx pin, used for flashing and debugging|Programming|?|
 |A0|ADC0|!|Analog input pin, cannot be configured as output|Rotary encoder DT|?|
