@@ -29,7 +29,7 @@ Yet another box - multi purpose box for my domotics
 |D0|GPIO16|!|HIGH at boot, used to wake up from deep sleep|Rotary encoder out A|
 |D1|GPIO5|v|/|Nokia 5510 Display CLK|
 |D2|GPIO4|v|/|Nokia 5510 Display DIN|
-|D3|GPIO0|!|connected to FLASH button, boot fails if pulled LOWBME280 SCL|
+|D3|GPIO0|!|connected to FLASH button, boot fails if pulled LOW|BME280 SCL|
 |D4|GPIO2|!|HIGH at boot, boot fails if pulled LOW|BME280 SDA|
 |D5|GPIO14|v|/|Nokia 5510 Display DC|
 |D6|GPIO12|v|/|Nokia 5510 Display CE|
