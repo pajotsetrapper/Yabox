@@ -23,10 +23,11 @@ Yet another box - multi purpose box for my domotics
 
 - https://lastminuteengineers.com/wemos-d1-mini-pinout-reference/
 - https://randomnerdtutorials.com/esp8266-pinout-reference-gpios)
+- All pins have configurable internall pullup-pulldown resistors
 
 |Label|GPIO|ESP8266 PIN note|Reason|Connect to|Support interrupts|
 |-----|----|------------|------|----------|------------------|
-|D0|GPIO16|!|HIGH at boot, used to wake up from deep sleep|unassigned|no|
+|D0|GPIO16|!|HIGH at boot, used to wake up from deep sleep|Rotary encoder CLK|no|
 |D1|GPIO5|SCL|/|BME280 SCL|yes|
 |D2|GPIO4|SDA|/|BME280 SDA|yes|
 |D3|GPIO0|!|connected to FLASH button, boot fails if pulled LOW|Display CE|yes|
@@ -34,36 +35,19 @@ Yet another box - multi purpose box for my domotics
 |D5|GPIO14|v|SCK|Display CLK|yes|
 |D6|GPIO12|v|MISO|Display DC|yes|
 |D7|GPIO13|v|MOSI|Display DIN (mosi)|yes|
-|D8|GPIO15|!|Required for boot, boot fails if pulled high|unassigned|yes|
+|D8|GPIO15|!|Required for boot, boot fails if pulled high|Rotary encoder switch|yes|
 |RX|GPIO3|!|Rx pin, used for flashing and debugging|Programming|?|
 |TX|GPIO1|!|Tx pin, used for flashing and debugging|Programming|?|
-|A0|ADC0|!|Analog input pin, cannot be configured as output|unassigned|?|
+|A0|ADC0|!|Analog input pin, cannot be configured as output|Rotary encoder DT|?|
 |GND|/|v|/|GND all components|n/a|
 |3V3|/|v|/|3V3 all components|n/a|
 
-
-No PINs assigned for the following yet:
-1 Rotary encoder CLK (IRQ preferred) - may pull a pin to GND depending on position
-2 Rotary encoder DT (IRQ preferred) - may pull a pin to GND depending on position
-3 Rotary encoder switch (IRQ preferred) - will not pull to ground / vcc upon boot is not pressed
-     |
-     |
-     -
-    |R| internal pullup, activated post boot
-     -
-     |
-      / switch
-     |
-    GND
-6 Display light
-7 Push button (optional, could use it for controlling display light, without need to connect both to the microcontroller)
+Separate push button will be used to control the display light
 
 ## Dependencies
-
 - https://github.com/adafruit/Adafruit-PCD8544-Nokia-5110-LCD-library (which depends on https://github.com/adafruit/Adafruit-GFX-Library itself)
 
 ## Some useful resources
-
 - https://www.edgemicrotech.com/esp8266-rotary-encoder-2004-lcd-dht11-with-a-menu-system/ (menu system)
 - https://www.sparkfun.com/datasheets/LCD/Monochrome/Nokia5110.pdf
 - https://github.com/mcauser/WeMos-D1-mini-Nokia-5110-PCD8544/blob/master/examples/hello-wemos/hello-wemos.ino
