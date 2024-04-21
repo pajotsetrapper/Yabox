@@ -34,9 +34,9 @@ Yet another box - multi purpose box for my domotics
 |D5|GPIO14|v|/|Nokia 5510 Display DC|yes|
 |D6|GPIO12|v|/|Nokia 5510 Display CE|yes|
 |D7|GPIO13|v|/|Nokia 5510 Display RST|yes|
-|D8|GPIO15|!|Required for boot, boot fails if pulled HIGH|Rotary encoder out B|no|
-|RX|GPIO3|!|Rx pin, used for flashing and debugging|Free|?|
-|TX|GPIO1|!|Tx pin, used for flashing and debugging|Free|?|
+|D8|GPIO15|!|Required for boot, boot fails if pulled HIGH|Rotary encoder out B|yes|
+|RX|GPIO3|!|Rx pin, used for flashing and debugging|Programming|?|
+|TX|GPIO1|!|Tx pin, used for flashing and debugging|Programming|?|
 |A0|ADC0|!|Analog input pin, cannot be configured as output|Rotary encoder switch|?|
 |GND|/|v|/|GND all components|n/a|
 |3V3|/|v|/|3V3 all components|n/a|
