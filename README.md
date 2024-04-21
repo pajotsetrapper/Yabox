@@ -24,32 +24,36 @@ Yet another box - multi purpose box for my domotics
 - https://lastminuteengineers.com/wemos-d1-mini-pinout-reference/
 - https://randomnerdtutorials.com/esp8266-pinout-reference-gpios)
 
-|Label|GPIO|Safe to use?|Reason|Connect to|Support interrupts|
+|Label|GPIO|ESP8266 PIN note|Reason|Connect to|Support interrupts|
 |-----|----|------------|------|----------|------------------|
-|D0|GPIO16|!|HIGH at boot, used to wake up from deep sleep|Rotary encoder switch|no|
-|D1|GPIO5|v|/|BME280 SCL|yes|
-|D2|GPIO4|v|/|BME280 SDA|yes|
-|D3|GPIO0|!|connected to FLASH button, boot fails if pulled LOW|free|yes| --
-|D4|GPIO2|!|HIGH at boot, boot fails if pulled LOW|free|yes|              --
-|D5|GPIO14|v|/|Nokia 5510 Display DC|yes|
-|D6|GPIO12|v|/|Nokia 5510 Display CE|yes| >> could hardcode & pull to ground
-|D7|GPIO13|v|/|Nokia 5510 Display RST|yes|
-rotar
+|D0|GPIO16|!|HIGH at boot, used to wake up from deep sleep|unassigned|no|
+|D1|GPIO5|SCL|/|BME280 SCL|yes|
+|D2|GPIO4|SDA|/|BME280 SDA|yes|
+|D3|GPIO0|!|connected to FLASH button, boot fails if pulled LOW|unassigned|yes| --
+|D4|GPIO2|!|HIGH at boot, boot fails if pulled LOW|unassigned|yes|              --
+|D5|GPIO14|v|SCK|Display CLK|yes|
+|D6|GPIO12|v|MISO|Display DC|yes|
+|D7|GPIO13|v|MOSI|Display DIN (mosi)|yes|
+|D8|GPIO15|!|Required for boot, boot fails if pulled high|unassigned|yes|
 |RX|GPIO3|!|Rx pin, used for flashing and debugging|Programming|?|
 |TX|GPIO1|!|Tx pin, used for flashing and debugging|Programming|?|
-|A0|ADC0|!|Analog input pin, cannot be configured as output|Rotary encoder out A|?|
+|A0|ADC0|!|Analog input pin, cannot be configured as output|unassigned|?|
 |GND|/|v|/|GND all components|n/a|
 |3V3|/|v|/|3V3 all components|n/a|
 
-!!Nokia 5510 Display CLK
-!!Nokia 5510 Display DIN
+Open questions: to save on PINS:
+- connect display RST button to RST on ESP8266 rather than on GPIO - This way, the screen will reset automatically when the Arduino resets
+- connect display CE to ground: (won't be able to re-use LCD pins between screen updates (looks ok for my project)
+> but what will be the impact on Arduino libs?
 
-* Best is to attach the encoder & buttons to interrupt capable pins:
-The Wemos board wiki suggests that any pin except D0 can be used for interrupts.
-D3 and D4 are commonly chosen because they work well for various shields and modules.
-
-
-... and the push button is then used as switch between VCC & the display's backlight
+No PINs assigned for the following yet:
+- Rotary encoder CLK (IRQ required)
+- Rotary encoder DT (IRQ required)
+- Rotary encoder switch (IRQ preferred)
+- Display RST
+- Display CE
+- Display light
+- Push button (optional, could use it for controlling display light, without need to connect both to the microcontroller)
 
 ## Dependencies
 
