@@ -24,21 +24,22 @@ Yet another box - multi purpose box for my domotics
 - https://lastminuteengineers.com/wemos-d1-mini-pinout-reference/
 - https://randomnerdtutorials.com/esp8266-pinout-reference-gpios)
 
-Label     GPIO      Safe to use? Reason                                                  Connect to
-D0	      GPIO16		!            HIGH at boot, used to wake up from deep sleep           Rotary encoder out A
-D1        GPIO5		  v                                                                    Nokia 5510 Display CLK
-D2        GPIO4		  v                                                                    Nokia 5510 Display DIN
-D3        GPIO0		  !            connected to FLASH button, boot fails if pulled LOW     BME280 SCL
-D4        GPIO2		  !            HIGH at boot, boot fails if pulled LOW                  BME280 SDA
-D5        GPIO14		v                                                                    Nokia 5510 Display DC
-D6        GPIO12		v                                                                    Nokia 5510 Display CE
-D7        GPIO13		v                                                                    Nokia 5510 Display RST
-D8        GPIO15		!            Required for boot, boot fails if pulled HIGH            Rotary encoder out B
-RX        GPIO3		  !            Rx pin, used for flashing and debugging
-TX        GPIO1		  !            Tx pin, used for flashing and debugging
-A0        ADC0		  !            Analog input pin, cannot be configured as output        Rotary encoder switch
-GND                                                                                      GND all components
-3V3                                                                                      3V3 all components
+|Label|GPIO|Safe to use?|Reason|Connect to|
+|-----|----|------------|------|----------|
+|D0|GPIO16|!|HIGH at boot, used to wake up from deep sleep|Rotary encoder out A|
+|D1|GPIO5|v|/|Nokia 5510 Display CLK|
+|D2|GPIO4|v|/|Nokia 5510 Display DIN|
+|D3|GPIO0|!|connected to FLASH button, boot fails if pulled LOWBME280 SCL|
+|D4|GPIO2|!|HIGH at boot, boot fails if pulled LOW|BME280 SDA|
+|D5|GPIO14|v|/|Nokia 5510 Display DC|
+|D6|GPIO12|v|/|Nokia 5510 Display CE|
+|D7|GPIO13|v|/|Nokia 5510 Display RST|
+|D8|GPIO15|!|Required for boot, boot fails if pulled HIGH|Rotary encoder out B|
+|RX|GPIO3|!|Rx pin, used for flashing and debugging|Free|
+|TX|GPIO1|!|Tx pin, used for flashing and debugging|Free|
+|A0|ADC0|!|Analog input pin, cannot be configured as output|Rotary encoder switch|
+|GND|/|v|/|GND all components|
+|3V3|/|v|/|3V3 all components|
 
 * Best is to attach the encoder & buttons to interrupt capable pins:
 The Wemos board wiki suggests that any pin except D0 can be used for interrupts.
