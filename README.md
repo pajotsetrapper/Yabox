@@ -29,8 +29,8 @@ Yet another box - multi purpose box for my domotics
 |D0|GPIO16|!|HIGH at boot, used to wake up from deep sleep|unassigned|no|
 |D1|GPIO5|SCL|/|BME280 SCL|yes|
 |D2|GPIO4|SDA|/|BME280 SDA|yes|
-|D3|GPIO0|!|connected to FLASH button, boot fails if pulled LOW|unassigned|yes| --
-|D4|GPIO2|!|HIGH at boot, boot fails if pulled LOW|unassigned|yes|              --
+|D3|GPIO0|!|connected to FLASH button, boot fails if pulled LOW|Display CE|yes|
+|D4|GPIO2|!|HIGH at boot, boot fails if pulled LOW|Display RST|yes|
 |D5|GPIO14|v|SCK|Display CLK|yes|
 |D6|GPIO12|v|MISO|Display DC|yes|
 |D7|GPIO13|v|MOSI|Display DIN (mosi)|yes|
@@ -41,19 +41,22 @@ Yet another box - multi purpose box for my domotics
 |GND|/|v|/|GND all components|n/a|
 |3V3|/|v|/|3V3 all components|n/a|
 
-Open questions: to save on PINS:
-- connect display RST button to RST on ESP8266 rather than on GPIO - This way, the screen will reset automatically when the Arduino resets
-- connect display CE to ground: (won't be able to re-use LCD pins between screen updates (looks ok for my project)
-> but what will be the impact on Arduino libs?
 
 No PINs assigned for the following yet:
-- Rotary encoder CLK (IRQ required)
-- Rotary encoder DT (IRQ required)
-- Rotary encoder switch (IRQ preferred)
-- Display RST
-- Display CE
-- Display light
-- Push button (optional, could use it for controlling display light, without need to connect both to the microcontroller)
+1 Rotary encoder CLK (IRQ preferred) - may pull a pin to GND depending on position
+2 Rotary encoder DT (IRQ preferred) - may pull a pin to GND depending on position
+3 Rotary encoder switch (IRQ preferred) - will not pull to ground / vcc upon boot is not pressed
+     |
+     |
+     -
+    |R| internal pullup, activated post boot
+     -
+     |
+      / switch
+     |
+    GND
+6 Display light
+7 Push button (optional, could use it for controlling display light, without need to connect both to the microcontroller)
 
 ## Dependencies
 
@@ -62,4 +65,5 @@ No PINs assigned for the following yet:
 ## Some useful resources
 
 - https://www.edgemicrotech.com/esp8266-rotary-encoder-2004-lcd-dht11-with-a-menu-system/ (menu system)
-- 
+- https://www.sparkfun.com/datasheets/LCD/Monochrome/Nokia5110.pdf
+- https://github.com/mcauser/WeMos-D1-mini-Nokia-5110-PCD8544/blob/master/examples/hello-wemos/hello-wemos.ino
